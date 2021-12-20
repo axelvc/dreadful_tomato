@@ -1,0 +1,98 @@
+@import '../../vars.scss';
+
+.header {
+  background: $black !important;
+}
+
+.logo {
+  height: 90%;
+  user-select: none;
+  pointer-events: none;
+}
+
+.header-button {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: bold;
+  color: $white;
+}
+
+.navLink {
+  @extend .header-button;
+
+  a[aria-current='page'] {
+    background: $red;
+
+    &:hover {
+      background: $red;
+      filter: brightness(1.1);
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+}
+
+// ------------- categories -------------
+.movies::before {
+  content: url('../../assets/icon-movies.png');
+}
+
+.series::before {
+  content: url('../../assets/icon-series.png');
+}
+
+// ------------- filters -------------
+.filters {
+  width: auto !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  margin-right: 1rem !important;
+
+  &:focus {
+    border-color: $white !important;
+    box-shadow: inset 0 0 0 1px $white !important;
+  }
+
+  span {
+    @extend .header-button;
+
+    &::before {
+      content: url('../../assets/icon-filter.png');
+      margin-top: 4px;
+    }
+  }
+}
+
+.filtersBox {
+  position: absolute;
+  width: 100vw;
+  left: 0;
+  right: 0;
+  padding: 0.5rem;
+  background: $red;
+
+  *[role='search'] {
+    stroke: $red;
+  }
+
+  input[role='searchbox'] {
+    border-radius: 1rem;
+    border: none;
+  }
+}
+
+// ------------- account -------------
+.login::after {
+  content: url('../../assets/icon-login.png');
+  margin-top: 8px;
+}
+
+.register {
+  padding: 0.25rem 1.5rem;
+  border-radius: 1rem;
+  background: $red;
+}
