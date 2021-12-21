@@ -67,19 +67,44 @@
 
 .filtersBox {
   position: absolute;
-  width: 100vw;
+  display: flex;
+  gap: 1rem;
+  width: 100%;
   left: 0;
   right: 0;
   padding: 0.5rem;
   background: $red;
-
-  *[role='search'] {
-    stroke: $red;
-  }
+  stroke: $red;
 
   input[role='searchbox'] {
     border-radius: 1rem;
     border: none;
+
+    &:focus {
+      outline-color: $gray;
+    }
+  }
+}
+
+.dateRange {
+  display: flex;
+  background: $white;
+  padding: 0 1rem;
+  border-radius: 1rem;
+
+  .icon {
+    align-self: center;
+    color: $red;
+  }
+
+  input {
+    border: none;
+    width: 100px;
+    padding: 0 0.5rem 0 1rem;
+
+    &:first-of-type {
+      border-right: 2px solid #ccc;
+    }
   }
 }
 
