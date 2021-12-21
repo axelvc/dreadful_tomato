@@ -43,7 +43,7 @@
   background: $red;
   opacity: 0.5;
 
-  &.active {
+  &[data-selected='true'] {
     opacity: 1;
   }
 

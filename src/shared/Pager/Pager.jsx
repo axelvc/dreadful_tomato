@@ -1,5 +1,4 @@
 import { useMemo } from 'react'
-import clsx from 'clsx'
 import { ChevronLeft24, ChevronRight24 } from '@carbon/icons-react'
 
 import s from './Pager.module.scss'
@@ -23,8 +22,9 @@ const Pager = ({ total, perPage, page, onChange, className }) => {
       {pages.map((n) => (
         <button
           key={n}
-          className={clsx([s.page, page === n && s.active])}
-          aria-label={`Page ${n}`}
+          data-selected={page === n}
+          className={s.page}
+          aria-label={`Page ${n + 1}`}
           onClick={() => onChange(n)}
         >
           {n + 1}
