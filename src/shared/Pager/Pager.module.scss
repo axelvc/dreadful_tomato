@@ -1,0 +1,54 @@
+@import '../../vars.scss';
+
+.container {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin: 2rem;
+}
+
+.button {
+  $size: 2.5rem;
+
+  display: grid;
+  place-items: center;
+  height: $size;
+  width: $size;
+  border: none;
+  border-radius: $size;
+  font-size: 1rem;
+  font-weight: bold;
+  color: $white;
+  background: none;
+  transition: 200ms;
+  transition-property: background, opacity;
+
+  &:hover {
+    background: rgba($white, 0.2);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+
+    &:hover {
+      background: none;
+    }
+  }
+}
+
+.page {
+  @extend .button;
+
+  cursor: pointer;
+  background: $red;
+  opacity: 0.5;
+
+  &.active {
+    opacity: 1;
+  }
+
+  &:hover {
+    opacity: 0.8;
+    background: $red;
+  }
+}

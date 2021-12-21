@@ -1,0 +1,26 @@
+@import '../../vars.scss';
+
+.container {
+  $poster-width: 250px;
+  $gap: 0.5rem;
+
+  color: $white;
+  margin: auto;
+  display: grid;
+  gap: $gap;
+  grid-template-columns: repeat(auto-fit, minmax($poster-width, 1fr));
+  max-width: calc(($poster-width * 5) + ($gap * 4));
+  justify-content: center;
+}
+
+.row {
+  grid-column: 1/-1;
+}
+
+.title {
+  @extend .row;
+
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}

@@ -1,0 +1,91 @@
+@import '../../vars.scss';
+
+.container {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  aspect-ratio: 7/8;
+  background: $black;
+  color: $white;
+
+  &:hover {
+    .details {
+      transform: translateY(0);
+    }
+
+    .hidden {
+      opacity: 1;
+    }
+  }
+}
+
+.img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.details {
+  $padding: 0.5rem;
+  $title-height: 1.5rem;
+
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template-rows: $title-height auto 1fr;
+  max-height: 100%;
+  gap: $padding;
+  width: 100%;
+  padding: $padding;
+  transition: transform 250ms ease-out;
+  transform: translateY(calc(100% - $title-height - ($padding * 2)));
+
+  &:before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: $black;
+    opacity: 0.8;
+  }
+}
+
+.hidden {
+  opacity: 0;
+  transition: 500ms ease-out;
+  transition-delay: 100ms;
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.date {
+  @extend .hidden;
+
+  display: flex;
+  gap: inherit;
+  font-weight: bold;
+  font-size: 0.875rem;
+}
+
+.description {
+  overflow: auto;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  @extend .hidden;
+}
