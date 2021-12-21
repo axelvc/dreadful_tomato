@@ -16,8 +16,6 @@ export function FiltersProvider({ children }) {
   const location = useLocation()
 
   useEffect(() => {
-    console.log(location.pathname)
-
     setFilters(initialState)
   }, [location.pathname])
 
