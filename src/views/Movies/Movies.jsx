@@ -2,7 +2,6 @@ import { Content } from 'carbon-components-react'
 import ProgramPager from '../../shared/ProgramPager/ProgramPager'
 
 import movies from '../../assets/movies.png'
-import s from './Movies.module.scss'
 
 const programs = Array(50)
   .fill({
@@ -15,7 +14,7 @@ const programs = Array(50)
   .map((v, i) => ({ ...v, title: `${v.title} ${i + 1}` }))
 
 const Movies = () => (
-  <Content className={s.container}>
+  <Content className="main">
     <ProgramPager title="Popular Movies" programs={programs} perPage={10} />
   </Content>
 )
