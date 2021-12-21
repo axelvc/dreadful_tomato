@@ -1,9 +1,15 @@
 @import 'carbon-components/scss/globals/scss/styles.scss';
+@import './vars.scss';
+
+body {
+  background: $black;
+}
 
 a,
 button {
   img {
     pointer-events: none;
     user-select: none;
+    vertical-align: bottom;
   }
 }

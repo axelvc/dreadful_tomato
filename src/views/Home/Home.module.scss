@@ -1,0 +1,36 @@
+@import '../../vars.scss';
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 0 !important;
+  background: $gray !important;
+}
+
+.card {
+  position: relative;
+
+  img {
+    width: 100%;
+  }
+
+  .details {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    color: $white;
+    background: $red;
+    transition: 200ms;
+    opacity: 0.8;
+  }
+
+  &:hover .details {
+    opacity: 1;
+  }
+
+  .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+}
