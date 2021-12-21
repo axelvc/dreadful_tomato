@@ -3,6 +3,7 @@ import { HeaderGlobalAction, Search } from 'carbon-components-react'
 import { Calendar24 } from '@carbon/icons-react'
 import { useClickAway } from 'react-use'
 import useFilters from '../useFilters'
+import clsx from 'clsx'
 
 import s from './Header.module.scss'
 
@@ -17,7 +18,11 @@ const Filters = () => {
 
   return (
     <div ref={container}>
-      <HeaderGlobalAction aria-label="Filters" onClick={() => setFiltersShown(!filtersShown)} className={s.filters}>
+      <HeaderGlobalAction
+        aria-label="Filters"
+        onClick={() => setFiltersShown(!filtersShown)}
+        className={clsx([s.filters, filtersShown && s.active])}
+      >
         <span>Filters</span>
       </HeaderGlobalAction>
 
