@@ -43,7 +43,7 @@ const Footer = () => (
       ))}
     </Row>
 
-    <small className={s.copy}>&copy; Copyright 2020 Deadfull Tomato Streaming. All Rights Reserved.</small>
+    <small className={s.copyright}>&copy; Copyright 2020 Deadfull Tomato Streaming. All Rights Reserved.</small>
   </Grid>
 )
 
