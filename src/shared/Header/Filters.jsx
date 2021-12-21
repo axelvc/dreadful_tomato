@@ -2,13 +2,15 @@ import { useState, useRef } from 'react'
 import { HeaderGlobalAction, Search } from 'carbon-components-react'
 import { Calendar24 } from '@carbon/icons-react'
 import { useClickAway } from 'react-use'
+import useFilters from '../useFilters'
 
 import s from './Header.module.scss'
 
+const FIRST_MOVIE_YEAR = 1888
+
 const Filters = () => {
-  const [filtersShown, setFiltersShown] = useState(true)
-  const [startYear, setStartYear] = useState('')
-  const [endYear, setEndYear] = useState('')
+  const [filtersShown, setFiltersShown] = useState(false)
+  const { filters, setFilters } = useFilters()
   const container = useRef(null)
 
   useClickAway(container, () => setFiltersShown(false))
@@ -21,7 +23,13 @@ const Filters = () => {
 
       {filtersShown && (
         <div className={s.filtersBox}>
-          <Search labelText="Name" placeholder="Name" size="sm" />
+          <Search
+            labelText="Name"
+            placeholder="Name"
+            size="sm"
+            value={filters.name}
+            onChange={(e) => setFilters({ ...filters, name: e.target.value })}
+          />
 
           <div className={s.dateRange}>
             <Calendar24 className={s.icon} />
@@ -29,17 +37,17 @@ const Filters = () => {
             <input
               type="number"
               placeholder="From"
-              value={startYear}
-              onChange={(ev) => setStartYear(ev.target.value)}
-              min={0}
+              value={filters.minYear}
+              onChange={(ev) => setFilters({ ...filters, minYear: ev.target.value })}
+              min={FIRST_MOVIE_YEAR}
               maxLength={4}
             />
             <input
               type="number"
               placeholder="To"
-              value={endYear}
-              onChange={(ev) => setEndYear(ev.target.value)}
-              min={0}
+              value={filters.maxYear}
+              onChange={(ev) => setFilters({ ...filters, maxYear: ev.target.value })}
+              min={FIRST_MOVIE_YEAR}
               maxLength={4}
             />
           </div>
