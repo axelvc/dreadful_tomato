@@ -8,7 +8,7 @@ describe('Home component', () => {
     it.each(['movies', 'series'])('should a have link to %s', (name) => {
       const link = screen.getByRole('link', { name: regex(name) })
 
-      expect(link).toHaveAttribute('href', `#/${name}`)
+      expect(link).toHaveAttribute('href', expect.stringMatching(regex(`/${name}`)))
     })
   })
 })
