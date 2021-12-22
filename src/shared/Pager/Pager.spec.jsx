@@ -8,6 +8,14 @@ function renderPager({ total = 50, perPage = 10, page = 0 } = {}) {
 }
 
 describe('Pager component', () => {
+  it('should render correct number of pages', () => {
+    renderPager({ total: 35, perPage: 10 })
+
+    const buttons = screen.queryAllByRole('button', { name: regex('page \\d') })
+
+    expect(buttons).toHaveLength(4)
+  })
+
   describe('number buttons', () => {
     const nums = [1, 2, 3, 4, 5]
 

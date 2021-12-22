@@ -4,11 +4,12 @@ import { ChevronLeft24, ChevronRight24 } from '@carbon/icons-react'
 import s from './Pager.module.scss'
 
 function makePages(total, perPage) {
-  const pageCount = Math.floor(total / perPage)
+  const pageCount = Math.ceil(total / perPage)
   const pages = Array(pageCount).fill(0)
 
   return pages.map((_, i) => i)
 }
+
 const Pager = ({ total, perPage, page, onChange, className }) => {
   const pages = useMemo(() => makePages(total, perPage), [total, perPage])
   const lastPage = pages.length - 1
