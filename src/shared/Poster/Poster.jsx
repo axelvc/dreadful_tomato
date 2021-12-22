@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
 import { Calendar16 } from '@carbon/icons-react'
+import clsx from 'clsx'
 
 import s from './Poster.module.scss'
 
 const Poster = ({ link, img, title, date, description, className, ...props }) => (
-  <Link to={link} className={`${s.container} ${className}`} {...props}>
+  <Link to={link} className={clsx([s.container, className])} data-testid="program" {...props}>
     <figure>
       <img className={s.img} src={img} alt={`${title} poster`} />
 

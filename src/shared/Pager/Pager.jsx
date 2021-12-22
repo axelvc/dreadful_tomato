@@ -14,7 +14,7 @@ const Pager = ({ total, perPage, page, onChange, className }) => {
   const lastPage = pages.length - 1
 
   return (
-    <div className={`${s.container} ${className}`}>
+    <div className={`${s.container} ${className}`} data-testid="pager">
       <button className={s.button} aria-label="Previous page" onClick={() => onChange(page - 1)} disabled={page === 0}>
         <ChevronLeft24 />
       </button>

@@ -42,6 +42,7 @@ const Filters = () => {
             <input
               type="number"
               placeholder="From"
+              aria-label="Minimum year"
               value={filters.minYear}
               onChange={(ev) => setFilters({ ...filters, minYear: ev.target.value })}
               min={FIRST_MOVIE_YEAR}
@@ -50,6 +51,7 @@ const Filters = () => {
             <input
               type="number"
               placeholder="To"
+              aria-label="Maximum year"
               value={filters.maxYear}
               onChange={(ev) => setFilters({ ...filters, maxYear: ev.target.value })}
               min={FIRST_MOVIE_YEAR}
