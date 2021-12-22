@@ -1,4 +1,5 @@
-import { useState, useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import Poster from '../Poster/Poster'
 import Pager from '../Pager/Pager'
 import useFilters from '../useFilters'
@@ -6,7 +7,7 @@ import useFilters from '../useFilters'
 import s from './ProgramPager.module.scss'
 
 const ProgramPager = ({ title, programs, perPage }) => {
-  const [page, setPage] = useState(0)
+  const [searchParams, setSearchParams] = useSearchParams()
   const { filters } = useFilters()
   const filteredPrograms = useMemo(() => {
     const { name, minYear, maxYear } = filters
@@ -20,6 +21,13 @@ const ProgramPager = ({ title, programs, perPage }) => {
     })
   }, [filters, programs])
 
+  useEffect(() => {
+    if (!searchParams.get('page')) {
+      setSearchParams({ page: 0 })
+    }
+  }, [])
+
+  const page = Number(searchParams.get('page'))
   const total = filteredPrograms.length
   const start = page * perPage
   const end = start + perPage
@@ -32,7 +40,15 @@ const ProgramPager = ({ title, programs, perPage }) => {
         <Poster key={data.id} {...data} />
       ))}
 
-      {total > perPage && <Pager total={total} perPage={perPage} page={page} onChange={setPage} className={s.row} />}
+      {total > perPage && (
+        <Pager
+          total={total}
+          perPage={perPage}
+          page={page}
+          onChange={(page) => setSearchParams({ page })}
+          className={s.row}
+        />
+      )}
     </section>
   )
 }

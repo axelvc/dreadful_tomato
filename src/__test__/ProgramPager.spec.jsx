@@ -1,4 +1,4 @@
-import { render, screen, regex, userEvent } from './utils'
+import { render, screen, regex, userEvent, act } from './utils'
 import ProgramPager from '../shared/ProgramPager/ProgramPager'
 import Header from '../shared/Header/Header'
 import getPrograms from '../service/programsService'
@@ -52,21 +52,21 @@ describe('ProgramPager component (integration)', () => {
     const next = screen.getByRole('button', { name: regex('next page') })
     const page3 = screen.getByRole('button', { name: regex('page 3') })
 
-    userEvent.click(next)
+    act(() => userEvent.click(next))
     dPrograms.slice(10, 20).forEach(({ title }) => {
       const program = screen.queryByText(regex(`^${title.trim()}$`))
 
       expect(program).toBeInTheDocument()
     })
 
-    userEvent.click(prev)
+    act(() => userEvent.click(prev))
     dPrograms.slice(0, 10).forEach(({ title }) => {
       const program = screen.queryByText(regex(`^${title.trim()}$`))
 
       expect(program).toBeInTheDocument()
     })
 
-    userEvent.click(page3)
+    act(() => userEvent.click(page3))
     dPrograms.slice(20, 30).forEach(({ title }) => {
       const program = screen.queryByText(regex(`^${title.trim()}$`))
 
