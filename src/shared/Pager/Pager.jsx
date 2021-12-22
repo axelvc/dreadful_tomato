@@ -7,16 +7,16 @@ function makePages(total, perPage) {
   const pageCount = Math.ceil(total / perPage)
   const pages = Array(pageCount).fill(0)
 
-  return pages.map((_, i) => i)
+  return pages.map((_, i) => i + 1)
 }
 
 const Pager = ({ total, perPage, page, onChange, className }) => {
   const pages = useMemo(() => makePages(total, perPage), [total, perPage])
-  const lastPage = pages.length - 1
+  const lastPage = pages.length
 
   return (
     <div className={`${s.container} ${className}`} data-testid="pager">
-      <button className={s.button} aria-label="Previous page" onClick={() => onChange(page - 1)} disabled={page === 0}>
+      <button className={s.button} aria-label="Previous page" onClick={() => onChange(page - 1)} disabled={page === 1}>
         <ChevronLeft24 />
       </button>
 
@@ -25,10 +25,10 @@ const Pager = ({ total, perPage, page, onChange, className }) => {
           key={n}
           data-selected={page === n}
           className={s.page}
-          aria-label={`Page ${n + 1}`}
+          aria-label={`Page ${n}`}
           onClick={() => onChange(n)}
         >
-          {n + 1}
+          {n}
         </button>
       ))}
 

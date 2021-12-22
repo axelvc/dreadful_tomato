@@ -23,13 +23,13 @@ const ProgramPager = ({ title, programs, perPage }) => {
 
   useEffect(() => {
     if (!searchParams.get('page')) {
-      setSearchParams({ page: 0 })
+      setSearchParams({ page: 1 })
     }
   }, [])
 
   const page = Number(searchParams.get('page'))
   const total = filteredPrograms.length
-  const start = page * perPage
+  const start = (page - 1) * perPage
   const end = start + perPage
 
   return (

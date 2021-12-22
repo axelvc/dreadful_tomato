@@ -37,7 +37,7 @@ describe('Pager component', () => {
 
         userEvent.click(button)
 
-        expect(cb).toBeCalledWith(n - 1)
+        expect(cb).toBeCalledWith(n)
       })
     })
   })
@@ -54,8 +54,8 @@ describe('Pager component', () => {
     })
 
     it.each([
-      ['previous', 'first', 0],
-      ['next', 'last', 4],
+      ['previous', 'first', 1],
+      ['next', 'last', 5],
     ])("should disable %s button when it's the %s page", (name, _, page) => {
       renderPager({ page })
 
